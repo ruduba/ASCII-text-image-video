@@ -12,10 +12,14 @@ let textsize = 10;
 
 let slider;
 
+const isMobile = window.innerWidth<600;
+const w = isMobile ? 40 : 75;
+const h = isMobile ? floor((window.innerHeight/window.innerWidth)*w) : 75;
+
 function setup(){
     noCanvas();
     video = createCapture(VIDEO).parent("canvas-container");
-    video.size(75, 75);
+    video.size(isMobile ? 40: 75, isMobile? 40: 75);
     asciiDiv = createDiv().parent("canvas-container");
 
     
@@ -96,7 +100,7 @@ function updateSliderBackground(){
 
 function updateTextSize(val){
     document.getElementById("text-size").textContent = val;
-    asciiDiv.style("font-size", val + "pt");
-    asciiDiv.style("line-height", floor(val*0.55)+"pt");
+    asciiDiv.style("font-size", val*(window.innerWidth/300) + "px");
+    asciiDiv.style("line-height", floor(val*0.55)*(window.innerWidth/300)+"px");
 
 }
