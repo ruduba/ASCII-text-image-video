@@ -17,12 +17,13 @@ let slider;
 function setup(){
     noCanvas();
     const isMobile = window.innerWidth<600;
-    const charAspect = 2.0;
-    const cols = isMobile ? 40: 80;
-    const rows = floor((window.innerHeight/window.innerWidth)*cols);
+    let aspectRatio = window
+    const cols = isMobile ? 40: 128;
+    const rows = isMobile ? floor((window.innerHeight/window.innerWidth)*cols): 72;
     video = createCapture(VIDEO).parent("canvas-container");
     video.size(cols, rows);
     asciiDiv = createDiv().parent("canvas-container");
+
 
     
 
@@ -41,9 +42,8 @@ function setup(){
        }
     });  
     document.querySelector(".flip").addEventListener("click", () => isFlipped = !isFlipped)
-    slider = document.getElementById("text-size-slider");
-    updateSliderBackground();
-    updateTextSize(slider.value);
+
+
 
 
     }
@@ -95,14 +95,3 @@ function setup(){
 }
 
 
-function updateSliderBackground(){
-    const value = (slider.value - slider.min)/(slider.max-slider.min)*100;
-    slider.style.background = `linear-gradient(to right, var(--light-color) ${value}%, var(--primary-bg-color) ${value}%)`;
-}
-
-function updateTextSize(val){
-    document.getElementById("text-size").textContent = val;
-    asciiDiv.style("font-size", val*(window.innerWidth/300) + "px");
-    asciiDiv.style("line-height", floor(val*0.55)*(window.innerWidth/300)+"px");
-
-}
