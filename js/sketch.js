@@ -1,4 +1,4 @@
-const density = "@%#WM8B&$wmoahkbdpqZ0OLCJUYXzcvunxrjft/+~i!lI;:,`'.               ";
+const density = "@%#WM8B&$wmoahkbdpqZ0OLCJUYXzcvunxrjft/+~i!lI;:,`'.                              ";
 
 let video;
 
