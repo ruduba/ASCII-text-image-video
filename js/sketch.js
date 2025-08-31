@@ -20,7 +20,7 @@ function setup(){
     const w = isMobile ? 40 : 75;
     const h = isMobile ? floor((window.innerHeight/window.innerWidth)*w) : 75;
     video = createCapture(VIDEO).parent("canvas-container");
-    video.size(isMobile ? 40: 75, isMobile? 40: 75);
+    video.size(w, h);
     asciiDiv = createDiv().parent("canvas-container");
 
     
