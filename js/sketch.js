@@ -4,6 +4,7 @@ let video;
 
 let asciiDiv;
 
+let isFrozen = false;
 
 
 function setup(){
@@ -11,10 +12,17 @@ function setup(){
     video = createCapture(VIDEO).parent("canvas-container");
     video.size(75, 75);
     asciiDiv = createDiv().parent("canvas-container");
+
+    document.querySelector(".capture").addEventListener("click", () => isFrozen = true);
+    document.querySelector(".start").addEventListener("click", () => isFrozen = false);
     }
 
     function draw(){
+
+   if(isFrozen) return;
     background(0);
+
+
     //image(test, 0, 0, width, height);
 
     //let w = width/test.width;
@@ -22,6 +30,8 @@ function setup(){
 
     video.loadPixels();
         let asciiImg = '';
+
+ 
     for(let j=0; j< video.height; j++){
             //let row = '';
         for(let i =0; i< video.width; i++){
@@ -45,6 +55,7 @@ function setup(){
         //console.log(row);
             //createDiv(row).parent("canvas-container");
     }
+    
     asciiDiv.html(asciiImg);
 
 
