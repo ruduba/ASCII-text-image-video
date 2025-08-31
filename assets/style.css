@@ -134,7 +134,7 @@ input, button{
     }
      .canvas-container {
         font-size: 10px !important; 
-        line-height: 10px;
+        line-height: 5.5px;
     }
     .span-slider{
         display: none;

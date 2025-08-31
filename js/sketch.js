@@ -18,7 +18,7 @@ function setup(){
     noCanvas();
     const isMobile = window.innerWidth<600;
     let aspectRatio = window
-    const cols = isMobile ? 40: 128;
+    const cols = isMobile ? 40: 100;
     const rows = isMobile ? floor((window.innerHeight/window.innerWidth)*cols): 72;
     video = createCapture(VIDEO).parent("canvas-container");
     video.size(cols, rows);
