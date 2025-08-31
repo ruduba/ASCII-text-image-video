@@ -1,4 +1,4 @@
-const density = "Ñ@#W$9876543210?!abc;:+=-,._                      ";
+const density = "@%#WM8B&$wmoahkbdpqZ0OLCJUYXzcvunxrjft/+~i!lI;:,`'.               ";
 
 let video;
 
