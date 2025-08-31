@@ -12,12 +12,13 @@ let textsize = 10;
 
 let slider;
 
-const isMobile = window.innerWidth<600;
-const w = isMobile ? 40 : 75;
-const h = isMobile ? floor((window.innerHeight/window.innerWidth)*w) : 75;
+
 
 function setup(){
     noCanvas();
+    const isMobile = window.innerWidth<600;
+    const w = isMobile ? 40 : 75;
+    const h = isMobile ? floor((window.innerHeight/window.innerWidth)*w) : 75;
     video = createCapture(VIDEO).parent("canvas-container");
     video.size(isMobile ? 40: 75, isMobile? 40: 75);
     asciiDiv = createDiv().parent("canvas-container");
