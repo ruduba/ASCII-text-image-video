@@ -86,13 +86,18 @@ input, button{
         cursor: pointer;
     }
 .canvas-container {
-  display: flex;
-  margin: 0 auto;   /* center */
-  
     display: flex;
+    margin: 0 auto;  
+    padding: 0;
+    display: block;
     justify-content: center;
     align-items: center;
     gap: 10px;
+    font-family: 'Courier';
+    font-size: 10pt;
+    line-height: 8pt;
+    
+    
 }
 
 @media screen and (min-width: 600px) {

@@ -7,10 +7,10 @@ function preload(){
 
 
 function setup(){
-    createCanvas(400, 400).parent("canvas-container");
-}
-
-function draw(){
+    noCanvas();
+    //video = createCapture(VIDEO);
+    //video.size(48, 48)
+    
     background(0);
     //image(test, 0, 0, width, height);
 
@@ -19,24 +19,27 @@ function draw(){
 
     test.loadPixels();
 
-    for(let i =0; i< test.width; i++){
-        for(let j =0; j< test.height; j++){
+    for(let j=0; j< test.height; j++){
+            let row = '';
+        for(let i =0; i< test.width; i++){
             const pIndex = (i+j*test.width) * 4;
             const r = test.pixels[pIndex+0];
             const g = test.pixels[pIndex+1];
             const b = test.pixels[pIndex+2];
             const avg = (r+ g+ b)/3;
 
-            noStroke();
-            fill(255);
-            //square(i*w, j*h, w);
-
             const len = density.length;
             const cIndex = floor(map(avg, 0, 255, len, 0));
-            textSize(w);
-            textAlign(CENTER, CENTER);
-            text(density.charAt(cIndex), i*w+w*0.5, j*h+h*0.5);
+
+            const c = density.charAt(cIndex);
+            if(c == ' ') row+= '&nbsp;'
+            else row +=c;
+        
+            //row += density.charAt(cIndex);
         }
+        //console.log(row);
+            createDiv(row).parent("canvas-container");
     }
+
 
 }
