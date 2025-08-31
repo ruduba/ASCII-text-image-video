@@ -6,6 +6,8 @@ let asciiDiv;
 
 let isFrozen = false;
 
+let isFlipped = false;
+
 
 function setup(){
     noCanvas();
@@ -16,6 +18,8 @@ function setup(){
     document.querySelector(".capture").addEventListener("click", () => isFrozen = true);
     document.querySelector(".start").addEventListener("click", () => isFrozen = false);
     }
+
+    document.querySelector(".flip").addEventListener("click", () => isFlipped = !isFlipped)
 
     function draw(){
 
@@ -30,12 +34,13 @@ function setup(){
 
     video.loadPixels();
         let asciiImg = '';
-
- 
+        
+        
     for(let j=0; j< video.height; j++){
             //let row = '';
         for(let i =0; i< video.width; i++){
-            const pIndex = (i+j*video.width) * 4;
+            let x = isFlipped ? (video.width - 1 - i) : i;
+            const pIndex = (x+j*video.width) * 4;
             const r = video.pixels[pIndex+0];
             const g = video.pixels[pIndex+1];
             const b = video.pixels[pIndex+2];
