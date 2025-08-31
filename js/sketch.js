@@ -8,6 +8,9 @@ let isFrozen = false;
 
 let isFlipped = false;
 
+let textsize = 10;
+
+let slider;
 
 function setup(){
     noCanvas();
@@ -15,16 +18,35 @@ function setup(){
     video.size(75, 75);
     asciiDiv = createDiv().parent("canvas-container");
 
+    
+
     document.querySelector(".capture").addEventListener("click", () => isFrozen = true);
     document.querySelector(".start").addEventListener("click", () => isFrozen = false);
-    }
-
+    
+    document.querySelector(".copy").addEventListener("click", ()=> {
+        const asciiText = asciiDiv.html().replace(/<br\>/g, "\n").replace(/&nbsp;/g, "");
+       if(isFrozen) {
+        navigator.clipboard.writeText(asciiText)
+        .then(()=>alert("copied ASII image to clipboard"))
+        .catch(err => console.error("copy failed", err));
+       }
+       else{
+        alert("first capture to copy")
+       }
+    });  
     document.querySelector(".flip").addEventListener("click", () => isFlipped = !isFlipped)
+    slider = document.getElementById("text-size-slider");
+    updateSliderBackground();
+    updateTextSize(slider.value);
 
+
+    }
     function draw(){
 
    if(isFrozen) return;
-    background(0);
+
+
+   // background(0);
 
 
     //image(test, 0, 0, width, height);
@@ -63,5 +85,18 @@ function setup(){
     
     asciiDiv.html(asciiImg);
 
+
+}
+
+
+function updateSliderBackground(){
+    const value = (slider.value - slider.min)/(slider.max-slider.min)*100;
+    slider.style.background = `linear-gradient(to right, var(--light-color) ${value}%, var(--primary-bg-color) ${value}%)`;
+}
+
+function updateTextSize(val){
+    document.getElementById("text-size").textContent = val;
+    asciiDiv.style("font-size", val + "pt");
+    asciiDiv.style("line-height", floor(val*0.55)+"pt");
 
 }
