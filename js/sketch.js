@@ -17,10 +17,11 @@ let slider;
 function setup(){
     noCanvas();
     const isMobile = window.innerWidth<600;
-    const w = isMobile ? 40 : 75;
-    const h = isMobile ? floor((window.innerHeight/window.innerWidth)*w) : 75;
+    const charAspect = 2.0;
+    const cols = isMobile ? 40: 80;
+    const rows = floor((window.innerHeight/window.innerWidth)*cols);
     video = createCapture(VIDEO).parent("canvas-container");
-    video.size(w, h);
+    video.size(cols, rows);
     asciiDiv = createDiv().parent("canvas-container");
 
     
